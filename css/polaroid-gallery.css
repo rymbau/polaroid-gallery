@@ -19,6 +19,7 @@ figure {
     -webkit-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
+    cursor: pointer;
 }
 
 figure img {
