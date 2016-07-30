@@ -12,7 +12,7 @@ figure {
     padding: 10px;
     margin: 0 auto;
     text-align: center;
-    background-color: white;   
+    background-color: white;
     -webkit-box-shadow: 2px 2px 4px 0 #555;
     -moz-box-shadow: 2px 2px 4px 0 #555;
     box-shadow: 2px 2px 4px 0 #555;
@@ -28,3 +28,12 @@ figure img {
     margin: 0 auto;
 }
 
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+    z-index: 999;
+}

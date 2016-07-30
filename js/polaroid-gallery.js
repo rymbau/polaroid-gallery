@@ -1,32 +1,42 @@
 var polaroidGallery = (function () {
+    var dataSize = [];
+    var currentIndex = -1;
+
     function polaroidGallery(elements) {
         elements = [].slice.call(elements);
-        var dataSize = [];
         elements.forEach(function (item) {
             dataSize.push({width: item.offsetWidth, height: item.offsetHeight});
 
             item.addEventListener('click', function () {
                 shuffle(elements);
 
-                var idx = (item.id).replace('fig', '') - 1;
-                var scale = 1.8;
-                var rotRandomD = 0;
-
-                var newWidth = (dataSize[idx].width * scale);
-                var newHeight = dataSize[idx].height * (newWidth / dataSize[idx].width);
-                
-                var x = (window.innerWidth - newWidth) / 2;
-                var y = (window.innerHeight - newHeight) / 2;
-
-                item.style.transformOrigin  = '0 0';
-                item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-                item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-                item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-                item.style.zIndex = 999;
+                var index = Number((item.id).replace('fig', ''));
+                select(index);
             })
         });
 
         shuffle(elements);
+        navigation(elements);
+    }
+
+    function select(index) {
+        var item = document.getElementById('fig' + index);
+        var scale = 1.8;
+        var rotRandomD = 0;
+
+        var newWidth = (dataSize[index].width * scale);
+        var newHeight = dataSize[index].height * (newWidth / dataSize[index].width);
+
+        var x = (window.innerWidth - newWidth) / 2;
+        var y = (window.innerHeight - newHeight) / 2;
+
+        item.style.transformOrigin = '0 0';
+        item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        item.style.zIndex = 999;
+
+        currentIndex = index;
     }
 
     function shuffle(elements) {
@@ -45,10 +55,27 @@ var polaroidGallery = (function () {
             var x = Math.floor((window.innerWidth - rotatedW) * randomX);
             var y = Math.floor((window.innerHeight - rotatedH) * randomY);
 
+            item.style.zIndex = zIndex++;
             item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
             item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
             item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-            item.style.zIndex = zIndex++;
+        })
+    }
+
+    function navigation(elements) {
+        var lastIndex = dataSize.length - 1;
+
+        var next = document.getElementById('next');
+        var preview = document.getElementById('preview');
+
+        next.addEventListener('click', function () {
+            shuffle(elements);
+            select((currentIndex >= lastIndex) ? 0 : currentIndex + 1);
+        });
+
+        preview.addEventListener('click', function () {
+            shuffle(elements);
+            select((currentIndex <= 0) ? lastIndex : currentIndex - 1);
         })
     }
 
