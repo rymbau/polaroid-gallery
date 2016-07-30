@@ -1,6 +1,7 @@
 var polaroidGallery = (function () {
     var dataSize = [];
     var currentIndex = -1;
+    var resizeTimeout = null;
 
     function polaroidGallery(elements) {
         elements = [].slice.call(elements);
@@ -17,6 +18,18 @@ var polaroidGallery = (function () {
 
         shuffle(elements);
         navigation(elements);
+
+        window.addEventListener('resize', function () {
+            if (resizeTimeout) {
+                clearTimeout(resizeTimeout);
+            }
+            resizeTimeout = setTimeout(function () {
+                shuffle(elements);
+                if (currentIndex > 0) {
+                    select(currentIndex);
+                }
+            }, 100);
+        })
     }
 
     function select(index) {
@@ -27,6 +40,7 @@ var polaroidGallery = (function () {
         var newWidth = (dataSize[index].width * scale);
         var newHeight = dataSize[index].height * (newWidth / dataSize[index].width);
 
+        console.log(window.innerWidth + ' - ' + window.innerHeight);
         var x = (window.innerWidth - newWidth) / 2;
         var y = (window.innerHeight - newHeight) / 2;
 
