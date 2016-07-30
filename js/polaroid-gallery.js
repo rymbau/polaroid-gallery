@@ -24,8 +24,9 @@ var polaroidGallery = (function () {
                 item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
                 item.style.zIndex = 999;
             })
-
         });
+
+        shuffle(elements);
     }
 
     function shuffle(elements) {
