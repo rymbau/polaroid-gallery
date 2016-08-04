@@ -38,6 +38,7 @@ figure img {
 
 figure figcaption {
     font-family: Comic Sans, Comic Sans MS, cursive;
+    color: #8F8476;
 }
 
 .navbar {
@@ -48,4 +49,19 @@ figure figcaption {
     text-align: center;
     background-color: black;
     z-index: 999;
+}
+
+button {
+    background-color: white;
+    padding: 10px 24px;
+    color: black;
+    border: 2px solid black;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    transition: 0.4s;
+}
+
+button:hover {
+    background-color: #f44336;
+    color: white;
 }
