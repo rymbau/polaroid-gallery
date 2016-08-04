@@ -1,6 +1,7 @@
 var polaroidGallery = (function () {
     var dataSize = [];
     var currentIndex = -1;
+    var navbarHeight = 60;
     var resizeTimeout = null;
     var xmlhttp = new XMLHttpRequest();
     var url = "data/data.json";
@@ -33,6 +34,7 @@ var polaroidGallery = (function () {
     }
 
     function init(elements) {
+        navbarHeight = document.getElementById("nav").offsetHeight;
         elements = [].slice.call(elements);
         elements.forEach(function (item) {
             dataSize.push({width: item.offsetWidth, height: item.offsetHeight});
@@ -70,7 +72,7 @@ var polaroidGallery = (function () {
         var newHeight = dataSize[index].height * (newWidth / dataSize[index].width);
 
         var x = (window.innerWidth - newWidth) / 2;
-        var y = (window.innerHeight - newHeight) / 2;
+        var y = (window.innerHeight - navbarHeight - newHeight) / 2;
 
         item.style.transformOrigin = '0 0';
         item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
