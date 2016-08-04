@@ -2,8 +2,37 @@ var polaroidGallery = (function () {
     var dataSize = [];
     var currentIndex = -1;
     var resizeTimeout = null;
+    var xmlhttp = new XMLHttpRequest();
+    var url = "data/data.json";
 
     function polaroidGallery(elements) {
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var myArr = JSON.parse(xmlhttp.responseText);
+                setGallery(myArr);
+
+                init(elements);
+            }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+    }
+
+    function setGallery(arr) {
+        var out = "";
+        var i;
+        for (i = 0; i < arr.length; i++) {
+
+            out += '<figure id="fig' + i + '">' +
+                '<img src="img/' + arr[i].name + '" alt="' + arr[i].name + '"/>' +
+                '<figcaption>' + arr[i].caption + '</figcaption>' +
+                '</figure>';
+        }
+        document.getElementById("gallery").innerHTML = out;
+    }
+
+    function init(elements) {
         elements = [].slice.call(elements);
         elements.forEach(function (item) {
             dataSize.push({width: item.offsetWidth, height: item.offsetHeight});
@@ -40,7 +69,6 @@ var polaroidGallery = (function () {
         var newWidth = (dataSize[index].width * scale);
         var newHeight = dataSize[index].height * (newWidth / dataSize[index].width);
 
-        console.log(window.innerWidth + ' - ' + window.innerHeight);
         var x = (window.innerWidth - newWidth) / 2;
         var y = (window.innerHeight - newHeight) / 2;
 
