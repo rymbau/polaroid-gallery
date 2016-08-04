@@ -6,13 +6,13 @@ var polaroidGallery = (function () {
     var xmlhttp = new XMLHttpRequest();
     var url = "data/data.json";
 
-    function polaroidGallery(elements) {
+    function polaroidGallery() {
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var myArr = JSON.parse(xmlhttp.responseText);
                 setGallery(myArr);
 
-                init(elements);
+                init();
             }
         };
         xmlhttp.open("GET", url, true);
@@ -33,9 +33,9 @@ var polaroidGallery = (function () {
         document.getElementById("gallery").innerHTML = out;
     }
 
-    function init(elements) {
+    function init() {
         navbarHeight = document.getElementById("nav").offsetHeight;
-        elements = [].slice.call(elements);
+        var elements = [].slice.call(document.getElementsByTagName('figure'));
         elements.forEach(function (item) {
             dataSize.push({width: item.offsetWidth, height: item.offsetHeight});
 
