@@ -41,14 +41,14 @@ var polaroidGallery = (function () {
             return function (obj, callback) {
                 if (MutationObserver) {
                     var obs = new MutationObserver(function (mutations, observer) {
+                        if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
                         callback(mutations);
                     });
 
-                    obs.observe(obj, { childList: true, subtree: true });
+                    obs.observe(obj, { childList: true, subtree: false });
                 }
                 else if (eventListenerSupported) {
-                    obj.addEventListener('DOMNodeInserted', callback, false);// à voir pour IE10
-                    obj.addEventListener('DOMNodeRemoved', callback, false);
+                    obj.addEventListener('DOMNodeInserted', callback, false);
                 }
             }
         })();
