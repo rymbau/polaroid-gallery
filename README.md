@@ -10,7 +10,7 @@ http://polaroid.glicer.com/
 
 img directory contains images to display.
 
-Add the JavaScript to the end of your document:
+Add the JavaScript to the end of your document :
 
 ```javascript
 <script type="text/javascript" src="js/polaroid-gallery.js"></script>
