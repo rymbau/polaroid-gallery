@@ -8,6 +8,8 @@ http://polaroid.glicer.com/
 
 ## Usage
 
+img directory contains images to display.
+
 Add the JavaScript to the end of your document:
 
 ```javascript
@@ -21,7 +23,7 @@ Add the JavaScript to the end of your document:
 
 ### Configuration
 
-Configure images to display in data/data.json file.
+Configure properties(filename and caption) of images to display in data/data.json file.
 
 Example:
 
@@ -47,3 +49,4 @@ MIT
 Authors : Rym BOUCHAGOUR & Emmanuel ROECKER
 
 Web Development Blog - http://dev.glicer.com
+
