@@ -30,11 +30,11 @@ Example:
 ```json
 [
 {
-"name": "img01.jpg", 
+"name": "img/img01.jpg", 
 "caption": "En voiture"
 },
 {
-"name": "img02.jpg",
+"name": "img/img02.jpg",
 "caption": "Amis"
 }
 ]
