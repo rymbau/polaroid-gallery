@@ -1,62 +1,62 @@
 [
 {
-"name": "img01.jpg", 
+"name": "img/img01.jpg", 
 "caption": "En voiture"
 },
 {
-"name": "img02.jpg",
+"name": "img/img02.jpg",
 "caption": "Amis"
 },
 {
-"name": "img03.jpg",
+"name": "img/img03.jpg",
 "caption": "Au travail"
 },
 {
-"name": "img04.jpg",
+"name": "img/img04.jpg",
 "caption": "Au garage"
 },
 {
-"name": "img05.jpg", 
+"name": "img/img05.jpg", 
 "caption": "Photo de groupe"
 },
 {
-"name": "img06.jpg", 
+"name": "img/img06.jpg", 
 "caption": "Mère et Fille"
 },
 {
-"name": "img07.jpg", 
+"name": "img/img07.jpg", 
 "caption": "Grand-père"
 },
 {
-"name": "img08.jpg", 
+"name": "img/img08.jpg", 
 "caption": "Par la fenêtre"
 },
 {
-"name": "img09.jpg",
+"name": "img/img09.jpg",
 "caption": "Une des soeurs"
 },
 {
-"name": "img10.jpg",
+"name": "img/img10.jpg",
 "caption": "Les soeurs"
 },
 {
-"name": "img11.jpg",
+"name": "img/img11.jpg",
 "caption": "Partie de pêche"
 },
 {
-"name": "img12.jpg",
+"name": "img/img12.jpg",
 "caption": "Famille"
 },
 {
-"name": "img13.jpg",
+"name": "img/img13.jpg",
 "caption": "Ami"
 },
 {
-"name": "img14.jpg",
+"name": "img/img14.jpg",
 "caption": "Une des Soeurs"
 },
 {
-"name": "img15.jpg",
+"name": "img/img15.jpg",
 "caption": "Nounou"
 }
 ]
