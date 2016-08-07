@@ -16,14 +16,14 @@ Add the JavaScript to the end of your document :
 <script type="text/javascript" src="js/polaroid-gallery.js"></script>
 <script>
     window.onload = function () {
-        new polaroidGallery();
+        new polaroidGallery("data/data.json"); //data/data.json contains images properties to display 
     }
 </script>
 ```
 
 ### Configuration
 
-Configure properties(filename and caption) of images to display in data/data.json file.
+Configure properties(path and caption) of images to display in data/data.json file.
 
 Example:
 
