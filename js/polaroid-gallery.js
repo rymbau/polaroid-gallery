@@ -1,7 +1,7 @@
 var polaroidGallery = (function () {
     var dataSize = {};
     var dataLength = 0;
-    var currentItem = null;
+    var currentData = null;
     var navbarHeight = 60;
     var resizeTimeout = null;
     var xmlhttp = new XMLHttpRequest();
@@ -58,21 +58,22 @@ var polaroidGallery = (function () {
             gallery.forEach(function (item) {
                 var img = item.getElementsByTagName('img')[0];
                 var first = true;
-                img.addEventListener('load', function () {
+                img.addEventListener('load', function () {              
+                    dataSize[item.id] = {item: item, width: item.offsetWidth, height: item.offsetHeight};
+
                     if (first) {
-                        currentItem = item;
+                        currentData = dataSize[item.id];
                         first = false;
                     }
-                    dataSize[item.id] = {item: item, width: item.offsetWidth, height: item.offsetHeight};
 
                     dataLength++;
 
                     item.addEventListener('click', function () {
-                        select(item);
+                        select(dataSize[item.id]);
                         shuffleAll();
                     });
 
-                    shuffle(item, zIndex++);
+                    shuffle(dataSize[item.id], zIndex++);
                 })
             });
         });
@@ -88,19 +89,19 @@ var polaroidGallery = (function () {
             }
             resizeTimeout = setTimeout(function () {
                 shuffleAll();
-                if (currentItem) {
-                    select(currentItem);
+                if (currentData) {
+                    select(currentData);
                 }
             }, 100);
         });
     }
 
-    function select(item) {
+    function select(data) {
         var scale = 1.8;
         var rotRandomD = 0;
 
-        var initWidth = dataSize[item.id].width;
-        var initHeight = dataSize[item.id].height;
+        var initWidth = data.width;
+        var initHeight = data.height;
 
         var newWidth = (initWidth * scale);
         var newHeight = initHeight * (newWidth / initWidth);
@@ -108,16 +109,16 @@ var polaroidGallery = (function () {
         var x = (window.innerWidth - newWidth) / 2;
         var y = (window.innerHeight - navbarHeight - newHeight) / 2;
 
-        item.style.transformOrigin = '0 0';
-        item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-        item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-        item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-        item.style.zIndex = 999;
+        data.item.style.transformOrigin = '0 0';
+        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
+        data.item.style.zIndex = 999;
 
-        currentItem = item;
+        currentData = data;
     }
 
-    function shuffle(item, zIndex) {
+    function shuffle(data, zIndex) {
         var randomX = Math.random();
         var randomY = Math.random();
         var maxR = 45;
@@ -125,24 +126,24 @@ var polaroidGallery = (function () {
         var rotRandomD = Math.random() * (maxR - minR) + minR;
         var rotRandomR = rotRandomD * Math.PI / 180;
 
-        var rotatedW = Math.abs(item.offsetWidth * Math.cos(rotRandomR)) + Math.abs(item.offsetHeight * Math.sin(rotRandomR));
-        var rotatedH = Math.abs(item.offsetWidth * Math.sin(rotRandomR)) + Math.abs(item.offsetHeight * Math.cos(rotRandomR));
+        var rotatedW = Math.abs(data.width * Math.cos(rotRandomR)) + Math.abs(data.height * Math.sin(rotRandomR));
+        var rotatedH = Math.abs(data.width * Math.sin(rotRandomR)) + Math.abs(data.height * Math.cos(rotRandomR));
 
         var x = Math.floor((window.innerWidth - rotatedW) * randomX);
-        var y = Math.floor((window.innerHeight - rotatedH) * randomY);
+        var y = Math.floor((window.innerHeight - rotatedH - navbarHeight) * randomY);
 
-        item.style.transformOrigin = '0 0';
-        item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        item.style.zIndex = zIndex;
+        data.item.style.transformOrigin = '50% 50%';
+        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
+        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
+        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
+        data.item.style.zIndex = zIndex;
     }
 
     function shuffleAll() {
         var zIndex = 0;
         for (var id in dataSize) {
-            if (id != currentItem.id) {
-                shuffle(dataSize[id].item, zIndex++);
+            if (id != currentData.item.id) {
+                shuffle(dataSize[id], zIndex++);
             }
         }
     }
@@ -152,20 +153,20 @@ var polaroidGallery = (function () {
         var preview = document.getElementById('preview');
 
         next.addEventListener('click', function () {
-            var currentIndex = Number(currentItem.id) + 1;
+            var currentIndex = Number(currentData.item.id) + 1;
             if (currentIndex >= dataLength) {
                 currentIndex = 0
             }
-            select(dataSize[currentIndex].item);
+            select(dataSize[currentIndex]);
             shuffleAll();
         });
 
         preview.addEventListener('click', function () {
-            var currentIndex = Number(currentItem.id) - 1;
+            var currentIndex = Number(currentData.item.id) - 1;
             if (currentIndex < 0) {
                 currentIndex = dataLength - 1
             }
-            select(dataSize[currentIndex].item);
+            select(dataSize[currentIndex]);
             shuffleAll();
         })
     }
