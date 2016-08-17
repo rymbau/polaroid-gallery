@@ -54,7 +54,6 @@ var polaroidGallery = (function () {
 
         observeDOM(document.getElementById('gallery'), function (mutations) {
             var gallery = [].slice.call(mutations[0].addedNodes);
-            var zIndex = 1;
             gallery.forEach(function (item) {
                 var img = item.getElementsByTagName('img')[0];
                 var first = true;
@@ -73,7 +72,7 @@ var polaroidGallery = (function () {
                         shuffleAll();
                     });
 
-                    shuffle(dataSize[item.id], zIndex++);
+                    shuffle(dataSize[item.id]);
                 })
             });
         });
@@ -118,7 +117,7 @@ var polaroidGallery = (function () {
         currentData = data;
     }
 
-    function shuffle(data, zIndex) {
+    function shuffle(data) {
         var randomX = Math.random();
         var randomY = Math.random();
         var maxR = 45;
@@ -136,7 +135,7 @@ var polaroidGallery = (function () {
         data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
         data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
         data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        data.item.style.zIndex = zIndex;
+        data.item.style.zIndex = 1;
     }
 
     function shuffleAll() {
