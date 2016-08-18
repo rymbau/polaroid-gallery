@@ -99,16 +99,9 @@ var polaroidGallery = (function () {
         var scale = 1.8;
         var rotRandomD = 0;
 
-        var initWidth = data.width;
-        var initHeight = data.height;
+        var x = (window.innerWidth - data.item.offsetWidth) / 2;
+        var y = (window.innerHeight - navbarHeight - data.item.offsetHeight) / 2;
 
-        var newWidth = (initWidth * scale);
-        var newHeight = initHeight * (newWidth / initWidth);
-
-        var x = (window.innerWidth - newWidth) / 2;
-        var y = (window.innerHeight - navbarHeight - newHeight) / 2;
-
-        data.item.style.transformOrigin = '0 0';
         data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
         data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
         data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
@@ -131,7 +124,6 @@ var polaroidGallery = (function () {
         var x = Math.floor((window.innerWidth - rotatedW) * randomX);
         var y = Math.floor((window.innerHeight - rotatedH - navbarHeight) * randomY);
 
-        data.item.style.transformOrigin = '50% 50%';
         data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
         data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
         data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
@@ -139,10 +131,9 @@ var polaroidGallery = (function () {
     }
 
     function shuffleAll() {
-        var zIndex = 0;
         for (var id in dataSize) {
             if (id != currentData.item.id) {
-                shuffle(dataSize[id], zIndex++);
+                shuffle(dataSize[id]);
             }
         }
     }
