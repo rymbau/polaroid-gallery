@@ -97,15 +97,14 @@ var polaroidGallery = (function () {
 
     function select(data) {
         var scale = 1.8;
-        var rotRandomD = 0;
 
         var x = (window.innerWidth - data.item.offsetWidth) / 2;
         var y = (window.innerHeight - navbarHeight - data.item.offsetHeight) / 2;
 
-        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
-        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(' + scale + ',' + scale + ')';
         data.item.style.zIndex = 999;
+        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
+        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
+        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
 
         currentData = data;
     }
@@ -116,18 +115,14 @@ var polaroidGallery = (function () {
         var maxR = 45;
         var minR = -45;
         var rotRandomD = Math.random() * (maxR - minR) + minR;
-        var rotRandomR = rotRandomD * Math.PI / 180;
 
-        var rotatedW = Math.abs(data.width * Math.cos(rotRandomR)) + Math.abs(data.height * Math.sin(rotRandomR));
-        var rotatedH = Math.abs(data.width * Math.sin(rotRandomR)) + Math.abs(data.height * Math.cos(rotRandomR));
+        var x = Math.floor((window.innerWidth - data.item.offsetWidth) * randomX);
+        var y = Math.floor((window.innerHeight - data.item.offsetHeight - navbarHeight) * randomY);
 
-        var x = Math.floor((window.innerWidth - rotatedW) * randomX);
-        var y = Math.floor((window.innerHeight - rotatedH - navbarHeight) * randomY);
-
-        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
-        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg) scale(1)';
         data.item.style.zIndex = 1;
+        data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
+        data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
+        data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
     }
 
     function shuffleAll() {
