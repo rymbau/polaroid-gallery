@@ -110,6 +110,12 @@ button {
 }
 
 button:hover {
-    background-color: #f44336;
+    background-color: #a00;
     color: white;
+}
+
+@media screen and (max-width: 767px) {
+    #forkme {
+        display: none;
+    }
 }
