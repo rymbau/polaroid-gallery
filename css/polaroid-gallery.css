@@ -10,6 +10,64 @@ body {
     padding: 0;
 }
 
+.photo {
+    position: absolute;
+    cursor: pointer;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: transform 0.6s;
+    -moz-transition: transform 0.6s;
+    transition: transform 0.6s;
+}
+
+.side-back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    display: table;
+}
+
+.side-back div {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.side-back p {
+    padding: 30px;
+    color: #8F8476;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.photo.flipped .side-front {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.photo.flipped .side-back {
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -ms-transform: rotateY(0);
+    transform: rotateY(0);
+}
+
 figure {
     width: 150px;
     position: absolute;
@@ -17,10 +75,6 @@ figure {
     margin: 0 auto;
     text-align: center;
     background-color: white;
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    transition: all 0.6s;
-    cursor: pointer;
 }
 
 figure img {
@@ -51,8 +105,8 @@ button {
     color: #ffffff;
     border: 2px solid black;
     -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    transition: 0.4s;
 }
 
 button:hover {

@@ -24,10 +24,10 @@ var polaroidGallery = (function () {
         var out = "";
         var i;
         for (i = 0; i < arr.length; i++) {
-            out += '<figure id="' + i + '">' +
+            out += '<div class="photo" id="' + i + '"><div class="side side-front"><figure>' +
                 '<img src="' + arr[i].name + '" alt="' + arr[i].name + '"/>' +
                 '<figcaption>' + arr[i].caption + '</figcaption>' +
-                '</figure>';
+                '</figure></div><div class="side side-back"><div><p>' + arr[i].quote + '</p></div></div></div>';
         }
         document.getElementById("gallery").innerHTML = out;
     }
@@ -40,8 +40,8 @@ var polaroidGallery = (function () {
             return function (obj, callback) {
                 if (MutationObserver) {
                     var obs = new MutationObserver(function (mutations, observer) {
-                        if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-                        callback(mutations);
+                        if (mutations[0].addedNodes.length || mutations[0].removedNodes.length)
+                            callback(mutations);
                     });
 
                     obs.observe(obj, { childList: true, subtree: false });
@@ -56,9 +56,14 @@ var polaroidGallery = (function () {
             var gallery = [].slice.call(mutations[0].addedNodes);
             gallery.forEach(function (item) {
                 var img = item.getElementsByTagName('img')[0];
+                var fig = item.getElementsByTagName('figure')[0];
                 var first = true;
-                img.addEventListener('load', function () {              
-                    dataSize[item.id] = {item: item, width: item.offsetWidth, height: item.offsetHeight};
+
+                img.addEventListener('load', function () {
+                    item.style.height = (fig.offsetHeight).toString() + 'px';
+                    item.style.width = (fig.offsetWidth).toString() + 'px';
+
+                    dataSize[item.id] = {item: item, width: item.offsetWidth, height: img.offsetHeight};
 
                     if (first) {
                         currentData = dataSize[item.id];
@@ -68,8 +73,12 @@ var polaroidGallery = (function () {
                     dataLength++;
 
                     item.addEventListener('click', function () {
-                        select(dataSize[item.id]);
-                        shuffleAll();
+                        if (currentData != dataSize[item.id]) {
+                            select(dataSize[item.id]);
+                            shuffleAll();
+                        } else {
+                            item.classList.contains('flipped') === true ? item.classList.remove('flipped') : item.classList.add('flipped');
+                        }
                     });
 
                     shuffle(dataSize[item.id]);
@@ -103,6 +112,7 @@ var polaroidGallery = (function () {
 
         data.item.style.zIndex = 999;
         data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
+        data.item.style.mozTransform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
         data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
         data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ',' + scale + ')';
 
@@ -121,6 +131,7 @@ var polaroidGallery = (function () {
 
         data.item.style.zIndex = 1;
         data.item.style.WebkitTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
+        data.item.style.mozTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
         data.item.style.msTransform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
         data.item.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + rotRandomD + 'deg)';
     }

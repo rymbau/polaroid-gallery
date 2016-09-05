@@ -1,62 +1,77 @@
 [
 {
 "name": "img/img01.jpg", 
-"caption": "En voiture"
+"caption": "En voiture",
+"quote": "Il a pour lui l'éternité, montre en main.<br> — Jules Renard"
 },
 {
 "name": "img/img02.jpg",
-"caption": "Amis"
+"caption": "Amis",
+"quote": "Le temps confirme l'amitié.<br> — Henri Lacordaire"
 },
 {
 "name": "img/img03.jpg",
-"caption": "Au travail"
+"caption": "Au travail",
+"quote": "Dans le temps, même le futur était mieux.<br> — Karl Valentin"
 },
 {
 "name": "img/img04.jpg",
-"caption": "Au garage"
+"caption": "Au garage",
+"quote": "Il faut inventer en même temps que l'on apprend.<br> — Plutarque"
 },
 {
 "name": "img/img05.jpg", 
-"caption": "Photo de groupe"
+"caption": "Photo de groupe",
+ "quote": "Les doctrines passent - les anecdotes demeurent.<br> — Emil Michel Cioran"
 },
 {
 "name": "img/img06.jpg", 
-"caption": "Mère et Fille"
+"caption": "Mère et Fille",
+"quote": "Il faut profiter du temps. Il ne passe pas deux fois.<br> — Melvin Gallant"
 },
 {
 "name": "img/img07.jpg", 
-"caption": "Grand-père"
+"caption": "Grand-père",
+"quote": "Je m'amuse à vieillir. C'est une occupation de tous les instants.<br> — Paul Léautaud"
 },
 {
 "name": "img/img08.jpg", 
-"caption": "Par la fenêtre"
+"caption": "Par la fenêtre",
+ "quote": "Le temps passe. Nous aussi.<br> — Félix Leclerc"
 },
 {
 "name": "img/img09.jpg",
-"caption": "Une des soeurs"
+"caption": "Une des soeurs",
+"quote": "Le temps met tout en lumière.<br> — Thalès"
 },
 {
 "name": "img/img10.jpg",
-"caption": "Les soeurs"
+"caption": "Les soeurs",
+"quote": "Le temps n'a pas la même allure pour tout le monde !<br> — William Shakespeare"
 },
 {
 "name": "img/img11.jpg",
-"caption": "Partie de pêche"
+"caption": "Partie de pêche",
+"quote": "On ne possède rien, jamais, - Qu'un peu de temps.<br> — Eugène Guillevic"
 },
 {
 "name": "img/img12.jpg",
-"caption": "Famille"
+"caption": "Famille",
+"quote": "Vienne la nuit sonne l'heure ; les jours s'en vont je demeure.<br> — Guillaume Apollinaire"
 },
 {
 "name": "img/img13.jpg",
-"caption": "Ami"
+"caption": "Ami",
+"quote": "L'amitié peut se passer longtemps de preuves.<br> — Jules Renard"
 },
 {
 "name": "img/img14.jpg",
-"caption": "Une des Soeurs"
+"caption": "Une des Soeurs",
+"quote": "Nous n'avons à nous que le jour d'aujourd'hui.<br> — Alphonse de Lamartine"
 },
 {
 "name": "img/img15.jpg",
-"caption": "Nounou"
+"caption": "Nounou",
+"quote": "C'est le temps qui mûrit l'amour.<br> — Simone Piuze"
 }
 ]
