@@ -27,7 +27,7 @@ var polaroidGallery = (function () {
             out += '<div class="photo" id="' + i + '"><div class="side side-front"><figure>' +
                 '<img src="' + arr[i].name + '" alt="' + arr[i].name + '"/>' +
                 '<figcaption>' + arr[i].caption + '</figcaption>' +
-                '</figure></div><div class="side side-back"><div><p>' + arr[i].quote + '</p></div></div></div>';
+                '</figure></div><div class="side side-back"><div><p>' + arr[i].description + '</p></div></div></div>';
         }
         document.getElementById("gallery").innerHTML = out;
     }

@@ -23,7 +23,12 @@ Add the JavaScript to the end of your document :
 
 ### Configuration
 
-Configure properties(path and caption) of images to display in data/data.json file.
+Configure properties of images to display in data/data.json file :
+
+* path : URL of file image
+* caption : text below image
+* description :  text description of flipped image
+
 
 Example:
 
@@ -31,11 +36,13 @@ Example:
 [
 {
 "name": "img/img01.jpg", 
-"caption": "En voiture"
+"caption": "En voiture",
+"description": "Il a pour lui l'éternité, montre en main.<br> — Jules Renard"
 },
 {
 "name": "img/img02.jpg",
-"caption": "Amis"
+"caption": "Amis",
+"description": "Le temps confirme l'amitié.<br> — Henri Lacordaire"
 }
 ]
 ```
