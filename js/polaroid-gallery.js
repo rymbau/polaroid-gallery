@@ -73,7 +73,7 @@ var polaroidGallery = (function () {
                     dataLength++;
 
                     item.addEventListener('click', function () {
-                        if (currentData != dataSize[item.id]) {
+                        if ((currentData != dataSize[item.id]) || (currentData == null)) {
                             select(dataSize[item.id]);
                             shuffleAll();
                         } else {
