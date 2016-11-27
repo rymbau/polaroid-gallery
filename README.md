@@ -4,7 +4,7 @@ Javascript/CSS Polaroid Gallery - no dependencies
 
 ## Demo
 
-http://polaroid.glicer.com/
+http://projects.glicer.com/polaroid-gallery
 
 ## Usage
 
