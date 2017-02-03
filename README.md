@@ -6,6 +6,8 @@ Javascript/CSS Polaroid Gallery - no dependencies
 
 http://projects.glicer.com/polaroid-gallery
 
+![polaroid-gallery](img/polaroid-gallery.mp4)
+
 ## Usage
 
 img directory contains images to display.
