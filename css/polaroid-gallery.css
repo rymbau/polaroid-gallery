@@ -114,8 +114,30 @@ button:hover {
     color: white;
 }
 
+#copyright {
+    font-family: Consolas, Verdana, Arial, sans-serif;
+    position: fixed;
+    color: #ccc;
+    text-decoration: none;
+    bottom: 20px;
+    right: 10px;
+}
+
+#copyright:hover {
+    color: white;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 767px) {
     #forkme {
         display: none;
+    }
+
+    #copyright {
+        position: relative;
+        display: block;
+        text-align: center;
+        right: 0px;
+        bottom: 0px;
     }
 }
