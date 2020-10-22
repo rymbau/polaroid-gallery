@@ -44,7 +44,7 @@ Example:
 {
 "name": "img/img02.jpg",
 "caption": "Amis",
-"description": "Le temps confirme l'amitié.<br> — Henri Lacordaire"
+"description": "Le The Configer l'amitié.<br> — Henri Lacordaire"
 }
 ]
 ```
