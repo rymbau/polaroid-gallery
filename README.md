@@ -2,6 +2,8 @@
 
 Javascript/CSS Polaroid Gallery - no dependencies
 
+Automatically moves the selected photo into the middle of the screen while shuffling the others. Also provides a navigation which allows you to navigate between photos with next / prev buttons.
+
 ## Demo
 
 https://rymbau.github.io/polaroid-gallery
