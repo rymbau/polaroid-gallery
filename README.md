@@ -4,7 +4,7 @@ Javascript/CSS Polaroid Gallery - no dependencies
 
 ## Demo
 
-http://projects.glicer.com/polaroid-gallery
+https://rymbau.github.io/polaroid-gallery
 
 ![polaroid-gallery](img/polaroid-gallery.gif)
 
